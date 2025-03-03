@@ -1,16 +1,17 @@
 #include <iostream>
 using namespace std;
 int* sumarArrays(int arr1[], int long1, int arr2[], int long2) {
+	// max nos dice cual es mas grande
 	int l3 = max(long1, long2);
+
 	int* fused = (int*)malloc(l3 * sizeof(int*));
-	int count1 = 0; int count2 = 0;
+
 	for (int i = 0; i < long1; ++i) {
+		//fusiona las dos
+			fused[i] = arr1[i] + arr2[i];
 		
-			fused[i] = arr1[count1] + arr2[count2];
-			count1++; count2++;
 		
-		
-	}
+	}//los ifs añaden los valores restantes del array mas grande
 	if (long1 > long2) {
 		for (int i = long2; i < long1; ++i) {
 			fused[i] = arr1[i];
@@ -28,9 +29,11 @@ int* sumarArrays(int arr1[], int long1, int arr2[], int long2) {
 }
 int main()
 {
+	//scanf longitudes
 	cout << "enter the length of both arrays:" << endl;
 	int longitud1, longitud2;
 	cin >> longitud1 >> longitud2;
+	//scanf arrays
 	int* arr1 = (int*)malloc(longitud1 * sizeof(int));
 	int* arr2 = (int*)malloc(longitud2 * sizeof(int));
 
@@ -43,9 +46,9 @@ int main()
 		cin >> arr2[i];
 	}
 
-
+	//max de nuevo
 	int l3 = max(longitud1, longitud2);
-
+	//hace la funcion de antes con la nueva info
 	int* resultat = sumarArrays(arr1, longitud1, arr2, longitud2);
 	cout << "L'arr combinao es:" << endl;
 	for (int i = 0; i < l3; ++i) {
